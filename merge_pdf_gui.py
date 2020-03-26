@@ -17,7 +17,6 @@ def merge_files(input_dir):
 
 if __name__ == "__main__":
 
- 
     sg.theme("System Default 1")
     
     layout = [ 
@@ -38,6 +37,8 @@ if __name__ == "__main__":
                 sg.popup("You need to choose both input folder and output file!", title="Warning!")
             else:
                 merged_pdf = merge_files(values["input"])
+                if not values["output"].lower().endswith((".pdf")):
+                    values["output"] += ".pdf"
                 merged_pdf.write(values["output"])
                 sg.popup("Files have been merged!", title="Success!")
                 break
